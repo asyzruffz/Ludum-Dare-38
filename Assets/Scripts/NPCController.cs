@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class NPCController : MonoBehaviour {
 
 	public float speed = 1;
 
 	private Vector3 dir;
 
 	void Start () {
-		
+		float angle = Random.Range (0, 360);
+		transform.Rotate (0, angle, 0);
+		dir = Vector3.forward;
 	}
 	
 	void Update () {
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxis ("Vertical");
-		dir = (new Vector3 (h, 0, v)).normalized;
+
 	}
 
 	void FixedUpdate () {
