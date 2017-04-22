@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 542563826}
   - component: {fileID: 542563825}
   - component: {fileID: 542563827}
+  - component: {fileID: 542563828}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -166,6 +167,17 @@ MonoBehaviour:
   npcPrefab: {fileID: 1835535083927622, guid: 9b72a8fa79355414081e3352cb9de959, type: 2}
   population: 5
   planet: {fileID: 2073683230}
+--- !u!114 &542563828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 542563824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba59ca89a591001418ca5886a1e87329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &952265476
 GameObject:
   m_ObjectHideFlags: 0
