@@ -20,6 +20,7 @@ public class Reaction : MonoBehaviour {
 				float awayAngle = Random.Range(90.0f, 270.0f);
 				transform.Rotate (transform.up, awayAngle);
 				controller.moving = true;
+				waitTimer = 0;
 			}
 		}
 	}
@@ -27,5 +28,9 @@ public class Reaction : MonoBehaviour {
 	public void ReactTowards (Vector3 pos) {
 		controller.moving = false;
 		transform.rotation = Quaternion.LookRotation (pos - transform.position, transform.up);
+	}
+
+	void Blink() {
+		transform.position = -transform.position;
 	}
 }

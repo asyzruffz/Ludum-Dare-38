@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed = 1;
+	public float walkSpeed = 1;
+	public float turnSpeed = 1;
 
 	private Vector3 dir;
 
@@ -13,11 +14,11 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		float h = Input.GetAxisRaw ("Horizontal");
-		float v = Input.GetAxis ("Vertical");
+		float h = Input.GetAxis ("Horizontal");
+		float v = Input.GetAxisRaw ("Vertical");
 		dir = (new Vector3 (h, 0, v)).normalized;
 		if(Mathf.Abs(h) > 0) {
-			//transform.Rotate(0, Mathf.Cos (localDir.x) * 90, 0);
+			transform.Rotate(0, Mathf.Asin (dir.x) * Mathf.Rad2Deg * turnSpeed * 0.01f, 0);
 		}
 
 		PlayerInteraction interaction = GetComponent<PlayerInteraction> ();
@@ -29,6 +30,6 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate () {
 		Vector3 localDir = transform.TransformDirection (dir);
-		GetComponent<Rigidbody> ().MovePosition (transform.position + localDir * speed * Time.deltaTime);
+		GetComponent<Rigidbody> ().MovePosition (transform.position + localDir * walkSpeed * Time.deltaTime);
 	}
 }
