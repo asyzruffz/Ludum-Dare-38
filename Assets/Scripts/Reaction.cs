@@ -1,14 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Reaction : MonoBehaviour {
 
+	public enum SpeechType {
+		PlsRememberMe,
+		WrongPerson,
+		FoundYou
+	}
+
 	public float respondDuration = 2;
 	public GameObject speech;
+	public Text dialog;
 
 	private NPCController controller;
 	private float waitTimer = 0;
+	private bool needToBlink;
 
 	void Start () {
 		controller = GetComponent<NPCController> ();
@@ -18,6 +25,10 @@ public class Reaction : MonoBehaviour {
 		if (!controller.moving) {
 			waitTimer += Time.deltaTime;
 			if (waitTimer >= respondDuration) {
+				if (needToBlink) {
+					Blink ();
+				}
+
 				float awayAngle = Random.Range(90.0f, 270.0f);
 				transform.Rotate (Vector3.up, awayAngle);
 				speech.SetActive (false);
@@ -27,13 +38,31 @@ public class Reaction : MonoBehaviour {
 		}
 	}
 
-	public void ReactTowards (Vector3 pos) {
+	public void ReactTowards (Vector3 pos, SpeechType speechType) {
 		controller.moving = false;
-		speech.SetActive (true);
+		SetSpeech (speechType);
 		transform.rotation = Quaternion.LookRotation (pos - transform.position, transform.up);
+		needToBlink = (speechType == SpeechType.PlsRememberMe || speechType == SpeechType.FoundYou);
 	}
 
-	void Blink() {
+	void Blink () {
 		transform.position = -transform.position;
+		needToBlink = false;
+	}
+
+	void SetSpeech (SpeechType speechType) {
+		switch (speechType) {
+			case SpeechType.PlsRememberMe:
+				dialog.text = "See you again!";
+				break;
+			case SpeechType.WrongPerson:
+				dialog.text = "Sorry, wrong person!";
+				break;
+			case SpeechType.FoundYou:
+				dialog.text = "Found you!";
+				break;
+		}
+
+		speech.SetActive (true);
 	}
 }
