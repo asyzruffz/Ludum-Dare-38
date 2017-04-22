@@ -23,8 +23,22 @@ public class PlayerController : MonoBehaviour {
 
 		PlayerInteraction interaction = GetComponent<PlayerInteraction> ();
 		if (Input.GetButtonDown("Jump") && interaction.detecting) {
-			interaction.target.GetComponent<Reaction> ().ReactTowards (transform.position);
+			PlayerMemory memory = GetComponent<PlayerMemory> ();
+
 			Debug.Log ("Interacting " + interaction.target.name);
+			Transform target = interaction.target;
+			Reaction.SpeechType speak;
+			if (memory.retainingMemory) {
+				if (memory.Recall (target.GetComponent<NPCAttrib> ().ID)) {
+					speak = Reaction.SpeechType.FoundYou;
+				} else {
+					speak = Reaction.SpeechType.WrongPerson;
+				}
+			} else {
+				memory.Remember (target.GetComponent<NPCAttrib> ().ID);
+				speak = Reaction.SpeechType.PlsRememberMe;
+			}
+			target.GetComponent<Reaction> ().ReactTowards (transform.position, speak);
 		}
 	}
 
