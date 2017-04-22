@@ -19,7 +19,7 @@ public class Reaction : MonoBehaviour {
 			waitTimer += Time.deltaTime;
 			if (waitTimer >= respondDuration) {
 				float awayAngle = Random.Range(90.0f, 270.0f);
-				transform.Rotate (transform.up, awayAngle);
+				transform.Rotate (Vector3.up, awayAngle);
 				speech.SetActive (false);
 				controller.moving = true;
 				waitTimer = 0;
