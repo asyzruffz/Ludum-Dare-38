@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 54130195787096556}
   - component: {fileID: 114620178808723286}
   - component: {fileID: 114545077967134916}
+  - component: {fileID: 114582665443371134}
   m_Layer: 0
   m_Name: Man
   m_TagString: Untagged
@@ -297,6 +298,8 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -331,6 +334,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23415374839226340
 MeshRenderer:
@@ -362,6 +366,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23449831783685432
 MeshRenderer:
@@ -393,6 +398,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23486286090917668
 MeshRenderer:
@@ -424,6 +430,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23944576590565852
 MeshRenderer:
@@ -455,6 +462,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23962471887529230
 MeshRenderer:
@@ -486,6 +494,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33223233424132414
 MeshFilter:
@@ -581,7 +590,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9ffd8dddb62a544bc05c2f86cf9cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  walkSpeed: 1
+  turnSpeed: 1
+--- !u!114 &114582665443371134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1360300147029942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d5be507b46eb8499cb53e47f6286c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyparts:
+  - {fileID: 4155536332299406}
+  - {fileID: 4234114691293654}
+  - {fileID: 4130045932551734}
+  - {fileID: 4544163973721802}
+  - {fileID: 4908293050355696}
+  - {fileID: 4761498949545480}
+  bodyColor:
+  - {fileID: 2100000, guid: 97295686ba73ae84aadb839909fa2bab, type: 2}
+  - {fileID: 2100000, guid: c13ad9cb03669c74da429558c1d70541, type: 2}
+  - {fileID: 2100000, guid: 3d124914f7df53542b8c5ea57a540eb4, type: 2}
+  - {fileID: 2100000, guid: 1ad4dc9f167ae564a849494cff6f0060, type: 2}
+  - {fileID: 2100000, guid: 8adb71223005e454692ec2ba867e7552, type: 2}
+  ID: 
 --- !u!114 &114620178808723286
 MonoBehaviour:
   m_ObjectHideFlags: 1
