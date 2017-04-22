@@ -3,7 +3,7 @@
 public class PlayerInteraction : MonoBehaviour {
 
 	public bool detecting;
-	public Transform detectTarget;
+	public Transform target;
 
 	public LayerMask interactMask;
 	public Vector3 offset;
@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour {
 		rotatedOffset = transform.TransformDirection (offset);
 		RaycastHit hit;
 		detecting = Physics.Raycast (transform.position + rotatedOffset, transform.forward, out hit, distance, interactMask);
-		detectTarget = detecting ? hit.collider.transform.parent : null;
+		target = detecting ? hit.collider.transform.parent : null;
 	}
 
 	void OnDrawGizmos () {

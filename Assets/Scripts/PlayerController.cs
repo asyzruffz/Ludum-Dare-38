@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		float h = Input.GetAxis ("Horizontal");
+		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 		dir = (new Vector3 (h, 0, v)).normalized;
 		if(Mathf.Abs(h) > 0) {
@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour {
 
 		PlayerInteraction interaction = GetComponent<PlayerInteraction> ();
 		if (Input.GetButtonDown("Jump") && interaction.detecting) {
-			interaction.detectTarget.GetComponent<Reaction> ().ReactTowards (transform.position);
-			Debug.Log ("Interacting " + interaction.detectTarget.name);
+			interaction.target.GetComponent<Reaction> ().ReactTowards (transform.position);
+			Debug.Log ("Interacting " + interaction.target.name);
 		}
 	}
 
 	void FixedUpdate () {
-		Vector3 localDir = transform.TransformDirection (dir);
+		Vector3 localDir = transform.TransformDirection (Vector3.forward * dir.z);
 		GetComponent<Rigidbody> ().MovePosition (transform.position + localDir * walkSpeed * Time.deltaTime);
 	}
 }
