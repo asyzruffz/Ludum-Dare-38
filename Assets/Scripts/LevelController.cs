@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour {
 	public void NextLevel () {
 		currentGameLvl++;
 
-		if (currentGameLvl > 15) {
+		if (currentGameLvl > 10) {
 			GameOver ();
 			return;
 		}

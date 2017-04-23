@@ -63,15 +63,20 @@ public class Reaction : MonoBehaviour {
 	}
 
 	void SetSpeech (SpeechType speechType) {
+		AudioController audioControl = GetComponent<AudioController> ();
+
 		switch (speechType) {
 			case SpeechType.PlsRememberMe:
 				dialog.text = "See you again!";
+				audioControl.PlayMusicType ("SeeYouLater");
 				break;
 			case SpeechType.WrongPerson:
 				dialog.text = "Sorry, wrong person!";
+				audioControl.PlayMusicType ("WrongPerson");
 				break;
 			case SpeechType.FoundYou:
 				dialog.text = "Found you!";
+				audioControl.PlayMusicType ("FoundYou");
 				needToNextLvl = true;
 				break;
 		}
