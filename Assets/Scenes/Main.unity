@@ -216,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1469128500
 AudioListener:
   m_ObjectHideFlags: 0
@@ -383,6 +383,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3d124914f7df53542b8c5ea57a540eb4, type: 2}
+    - target: {fileID: 114620178808723286, guid: d8bf8cb565f11e14b93f9800b035f540,
+        type: 2}
+      propertyPath: attractor
+      value: 
+      objectReference: {fileID: 2073683230}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8bf8cb565f11e14b93f9800b035f540, type: 2}
   m_IsPrefabParent: 0
@@ -391,21 +396,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1360300147029942, guid: d8bf8cb565f11e14b93f9800b035f540,
     type: 2}
   m_PrefabInternal: {fileID: 1999760706}
---- !u!114 &1999760708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1999760707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 037330a1d182159459d284ef765f1423, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attractor: {fileID: 2073683230}
-  rotateUpwardGravity: 1
-  alwaysFacing: 0
-  facingDirection: {x: 0, y: 0}
 --- !u!54 &1999760709
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -458,6 +448,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3d124914f7df53542b8c5ea57a540eb4, type: 2}
   - {fileID: 2100000, guid: 1ad4dc9f167ae564a849494cff6f0060, type: 2}
   - {fileID: 2100000, guid: 8adb71223005e454692ec2ba867e7552, type: 2}
+  ID: 
 --- !u!1 &2073683229
 GameObject:
   m_ObjectHideFlags: 0
