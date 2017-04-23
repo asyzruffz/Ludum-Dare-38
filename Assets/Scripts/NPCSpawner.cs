@@ -8,7 +8,7 @@ public class NPCSpawner : MonoBehaviour {
 
 	void Start () {
 		for (int i = 0; i < population; i++) {
-			GameObject npc = Instantiate (npcPrefab, Random.insideUnitSphere * planet.transform.lossyScale.x / 2f, Quaternion.identity);
+			GameObject npc = Instantiate (npcPrefab, Random.insideUnitSphere * planet.transform.lossyScale.x / 2f, Quaternion.identity, transform);
 			npc.GetComponent<FauxGravityBody> ().attractor = planet;
 		}
 	}

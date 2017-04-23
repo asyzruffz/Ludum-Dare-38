@@ -16,12 +16,6 @@ public class CameraSwitch : MonoBehaviour {
 		Switching ();
 	}
 	
-	void Update () {
-		if (Input.GetButtonDown("Fire1")) {
-			Toggle ();
-		}
-	}
-
 	public void Toggle () {
 		if (currentIndex >= 0) {
 			currentIndex++;

@@ -39,18 +39,21 @@ public class PlayerController : MonoBehaviour {
 
 			Debug.Log ("Interacting " + interaction.target.name);
 			Transform target = interaction.target;
-			Reaction.SpeechType speak;
-			if (memory.retainingMemory) {
-				if (memory.Recall (target.GetComponent<NPCAttrib> ().ID)) {
-					speak = Reaction.SpeechType.FoundYou;
+
+			if (!target.GetComponent<Reaction> ().IsReacting ()) {
+				Reaction.SpeechType speak;
+				if (memory.retainingMemory) {
+					if (memory.Recall (target.GetComponent<NPCAttrib> ().ID)) {
+						speak = Reaction.SpeechType.FoundYou;
+					} else {
+						speak = Reaction.SpeechType.WrongPerson;
+					}
 				} else {
-					speak = Reaction.SpeechType.WrongPerson;
+					memory.Remember (target.GetComponent<NPCAttrib> ().ID);
+					speak = Reaction.SpeechType.PlsRememberMe;
 				}
-			} else {
-				memory.Remember (target.GetComponent<NPCAttrib> ().ID);
-				speak = Reaction.SpeechType.PlsRememberMe;
+				target.GetComponent<Reaction> ().ReactTowards (transform.position, speak);
 			}
-			target.GetComponent<Reaction> ().ReactTowards (transform.position, speak);
 		}
 	}
 
