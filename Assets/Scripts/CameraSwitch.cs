@@ -17,7 +17,7 @@ public class CameraSwitch : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Input.GetButtonDown("Fire1")) {
+		if (Input.GetKeyDown(KeyCode.Return)) {
 			Toggle ();
 		}
 	}

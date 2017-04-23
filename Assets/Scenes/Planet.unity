@@ -178,6 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba59ca89a591001418ca5886a1e87329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1045954575}
+  currentGameLvl: 1
 --- !u!1 &952265476
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +248,11 @@ Transform:
 --- !u!20 &1014735651 stripped
 Camera:
   m_PrefabParentObject: {fileID: 20755901278104736, guid: d8bf8cb565f11e14b93f9800b035f540,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999760706}
+--- !u!1 &1045954575 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1360300147029942, guid: d8bf8cb565f11e14b93f9800b035f540,
     type: 2}
   m_PrefabInternal: {fileID: 1999760706}
 --- !u!1 &1286202674

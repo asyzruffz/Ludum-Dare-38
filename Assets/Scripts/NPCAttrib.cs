@@ -22,6 +22,7 @@ public class NPCAttrib : MonoBehaviour {
     }
 	
 	public void Recolour () {
+		ID = "";
 		int[] array = new int[colours.Length];
 		for (int i = 0; i < array.Length; i++) {
 			array[i] = i;
@@ -33,70 +34,79 @@ public class NPCAttrib : MonoBehaviour {
 			case 2:
 			case 3:
 				// stage 1
-				SetHeadColour (colours[array[0]]);
-				SetBodyColour (colours[array[0]]);
-				SetArmColour (colours[array[0]]);
-				SetLegColour (colours[array[0]]);
+				SetHeadColour (array[0]);
+				SetBodyColour (array[0]);
+				SetLegColour (array[0]);
+				SetArmColour (array[0]);
 				break;
 			case 4:
 			case 5:
 			case 6:
 				// stage 2
-				SetHeadColour (colours[array[0]]);
-				SetBodyColour (colours[array[1]]);
-				SetArmColour (colours[array[1]]);
-				SetLegColour (colours[array[1]]);
+				SetHeadColour (array[0]);
+				SetBodyColour (array[1]);
+				SetLegColour (array[1]);
+				SetArmColour (array[1]);
 				break;
 			case 7:
 			case 8:
 			case 9:
 				// stage 3
-				SetHeadColour (colours[array[0]]);
-				SetBodyColour (colours[array[1]]);
-				SetArmColour (colours[array[1]]);
-				SetLegColour (colours[array[2]]);
+				SetHeadColour (array[0]);
+				SetBodyColour (array[1]);
+				SetLegColour (array[2]);
+				SetArmColour (array[1]);
 				break;
 			case 10:
 			case 11:
 			case 12:
 				// stage 4
-				SetHeadColour (colours[array[0]]);
-				SetBodyColour (colours[array[1]]);
-				SetArmColour (colours[array[2]]);
-				SetLegColour (colours[array[3]]);
+				SetHeadColour (array[0]);
+				SetBodyColour (array[1]);
+				SetLegColour (array[3]);
+				SetArmColour (array[2]);
 				break;
 			case 13:
 			case 14:
 			case 15:
 			default:
 				// stage 5
-				SetHeadColour (colours[array[0]]);
-				SetBodyColour (colours[array[1]]);
-				bodyparts[3].GetComponent<MeshRenderer>().material = colours[array[2]];
-				bodyparts[4].GetComponent<MeshRenderer>().material = colours[array[3]];
-				SetLegColour (colours[array[4]]);
+				SetHeadColour (array[0]);
+				SetBodyColour (array[1]);
+				SetLegColour (array[4]);
+				SetArmColour (array[2], array[3]);
 				break;
 		}
 	}
 	
-	void SetHeadColour (Material col) {
-		bodyparts[0].GetComponent<MeshRenderer>().material = col;
+	void SetHeadColour (int colIndex) {
+		bodyparts[0].GetComponent<MeshRenderer>().material = colours[colIndex];
+		ID = ID + colIndex.ToString ();
 	}
 	
-	void SetBodyColour (Material col) {
-		bodyparts[1].GetComponent<MeshRenderer>().material = col;
+	void SetBodyColour (int colIndex) {
+		bodyparts[1].GetComponent<MeshRenderer>().material = colours[colIndex];
+		ID = ID + colIndex.ToString ();
 	}
-	
-	void SetArmColour (Material col) {
-		bodyparts[3].GetComponent<MeshRenderer>().material = col;
-		bodyparts[4].GetComponent<MeshRenderer>().material = col;
+
+	void SetLegColour (int colIndex) {
+		bodyparts[2].GetComponent<MeshRenderer> ().material = colours[colIndex];
+		bodyparts[5].GetComponent<MeshRenderer> ().material = colours[colIndex];
+		ID = ID + colIndex.ToString ();
 	}
-	
-	void SetLegColour (Material col) {
-		bodyparts[2].GetComponent<MeshRenderer>().material = col;
-		bodyparts[5].GetComponent<MeshRenderer>().material = col;
+
+	void SetArmColour (int colIndex) {
+		bodyparts[3].GetComponent<MeshRenderer>().material = colours[colIndex];
+		bodyparts[4].GetComponent<MeshRenderer>().material = colours[colIndex];
+		ID = ID + colIndex.ToString () + colIndex.ToString ();
 	}
-	
+
+	void SetArmColour (int colIndex1, int colIndex2) {
+		bodyparts[3].GetComponent<MeshRenderer> ().material = colours[colIndex1];
+		bodyparts[4].GetComponent<MeshRenderer> ().material = colours[colIndex2];
+		ID = ID + colIndex1.ToString () + colIndex2.ToString ();
+	}
+
 	static System.Random _random = new System.Random();
 
 	static void Shuffle<T>(T[] array)
