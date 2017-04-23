@@ -6,13 +6,11 @@ public class LevelController : MonoBehaviour {
 
 	public GameObject player;
 	public int currentGameLvl = 1;
-
-	void Start () {
-		
-	}
 	
 	void Update () {
-
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.Quit ();
+		}
 	}
 
 	public void NextLevel () {
