@@ -16,6 +16,7 @@ public class Reaction : MonoBehaviour {
 	private NPCController controller;
 	private float waitTimer = 0;
 	private bool needToBlink;
+	private bool needToNextLvl;
 
 	void Start () {
 		controller = GetComponent<NPCController> ();
@@ -25,17 +26,28 @@ public class Reaction : MonoBehaviour {
 		if (!controller.moving) {
 			waitTimer += Time.deltaTime;
 			if (waitTimer >= respondDuration) {
+				waitTimer = 0;
 				if (needToBlink) {
 					Blink ();
+				}
+				if (needToNextLvl) {
+					needToNextLvl = false;
+					LevelController lvlCon = FindObjectOfType<LevelController> ();
+					if (lvlCon) {
+						lvlCon.NextLevel ();
+					}
 				}
 
 				float awayAngle = Random.Range(90.0f, 270.0f);
 				transform.Rotate (Vector3.up, awayAngle);
 				speech.SetActive (false);
 				controller.moving = true;
-				waitTimer = 0;
 			}
 		}
+	}
+
+	public bool IsReacting () {
+		return waitTimer > 0;
 	}
 
 	public void ReactTowards (Vector3 pos, SpeechType speechType) {
@@ -60,6 +72,7 @@ public class Reaction : MonoBehaviour {
 				break;
 			case SpeechType.FoundYou:
 				dialog.text = "Found you!";
+				needToNextLvl = true;
 				break;
 		}
 
