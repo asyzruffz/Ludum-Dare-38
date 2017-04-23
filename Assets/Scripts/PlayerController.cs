@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-	public float walkSpeed = 1;
+    public GameObject guide;
+
+    public float walkSpeed = 1;
 	public float turnSpeed = 1;
 
 	private Vector3 dir;
@@ -22,7 +25,16 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		PlayerInteraction interaction = GetComponent<PlayerInteraction> ();
-		if (Input.GetButtonDown("Jump") && interaction.detecting) {
+            if (interaction.detecting)
+            {
+                guide.SetActive(true);
+            }
+            else
+            {
+                guide.SetActive(false);
+            }
+
+            if (Input.GetButtonDown("Jump") && interaction.detecting) {
 			PlayerMemory memory = GetComponent<PlayerMemory> ();
 
 			Debug.Log ("Interacting " + interaction.target.name);

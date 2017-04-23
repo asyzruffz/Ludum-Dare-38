@@ -31,44 +31,39 @@ public class NPCAttrib : MonoBehaviour {
 		
 		switch (level) {
 			case 1:
-			case 2:
-			case 3:
 				// stage 1
 				SetHeadColour (array[0]);
 				SetBodyColour (array[0]);
 				SetLegColour (array[0]);
 				SetArmColour (array[0]);
 				break;
-			case 4:
-			case 5:
-			case 6:
+			case 2:
+			case 3:
 				// stage 2
 				SetHeadColour (array[0]);
 				SetBodyColour (array[1]);
 				SetLegColour (array[1]);
 				SetArmColour (array[1]);
 				break;
-			case 7:
-			case 8:
-			case 9:
+			case 4:
+			case 5:
 				// stage 3
 				SetHeadColour (array[0]);
 				SetBodyColour (array[1]);
 				SetLegColour (array[2]);
 				SetArmColour (array[1]);
 				break;
-			case 10:
-			case 11:
-			case 12:
+			case 6:
+			case 7:
 				// stage 4
 				SetHeadColour (array[0]);
 				SetBodyColour (array[1]);
 				SetLegColour (array[3]);
 				SetArmColour (array[2]);
 				break;
-			case 13:
-			case 14:
-			case 15:
+			case 8:
+			case 9:
+			case 10:
 			default:
 				// stage 5
 				SetHeadColour (array[0]);
