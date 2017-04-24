@@ -4,7 +4,6 @@ public class PlayerInteraction : MonoBehaviour {
 
 	public bool detecting;
 	public Transform target;
-
 	public LayerMask interactMask;
 	public Vector3 offset;
 	public float distance = 1;

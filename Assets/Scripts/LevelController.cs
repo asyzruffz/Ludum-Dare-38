@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
 
@@ -32,5 +31,10 @@ public class LevelController : MonoBehaviour {
 
 	public void GameOver () {
 		GetComponent<CameraSwitch> ().Toggle ();
+        GetComponent<UIManager> ().SetGameOverDisplay (true);
 	}
+
+    public void Restart () {
+        SceneManager.LoadScene (0);
+    }
 }

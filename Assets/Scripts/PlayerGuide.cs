@@ -1,16 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerGuide : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public GameObject guide;
+
+    private PlayerInteraction interaction;
+
+    void Start () {
+        interaction = GetComponent<PlayerInteraction> ();
+    }
 	
-	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (interaction.detecting) {
+            guide.SetActive (true);
+        } else {
+            guide.SetActive (false);
+        }
+    }
 }
